@@ -1,3 +1,4 @@
+package todolist;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -14,7 +15,7 @@ public class todolist {
 
 
         //Reading a file 
-        File todolist = new File("todolist.txt");
+        File todolist = new File("/home/ahsan/Desktop/javaproject/First/MainFOLDER/University/todolist/todolist.txt");
         if(!(todolist.exists())){
             try {
                 todolist.createNewFile();
