@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class todonow {
     public static void main(String[] args) throws IOException {
         ArrayList <String> Main = new ArrayList<>();
-        File file= new File("lists.txt");
+    File file= new File("lists.txt");
         if(!(file.exists())){
             file.createNewFile();
         }

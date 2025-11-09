@@ -7,95 +7,91 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class todolist {
-    
-    public static void main(String[] args) {
-        String text="";
-        ArrayList <String> array=new ArrayList<>(); 
-        Scanner inp = new Scanner(System.in);
-
-
-        //Reading a file 
-        File todolist = new File("/home/ahsan/Desktop/javaproject/First/MainFOLDER/University/todolist/todolist.txt");
-        if(!(todolist.exists())){
-            try {
-                todolist.createNewFile();
-            } catch (IOException e) {
-                System.out.println("Error creating One File ");
-                e.printStackTrace();
-            }
+    static void loadile(ArrayList <String> fMain,File file) throws IOException{//LODAING FILE 
         
+        if(!(file.exists())){
+            file.createNewFile();
+            System.out.println("CREAted "+file);
         }
-         Scanner reader;
-     try {
-        reader = new Scanner(todolist);
-   System.out.println("****TASK ****");
-        while(reader.hasNextLine()){
-            String line = reader.nextLine();
+        Scanner readfile = new Scanner(file);
+        String line;
+        System.out.println("******TASKS************");
+        while (readfile.hasNextLine()) {
+            line=readfile.nextLine();
             System.out.println(line);
-            array.add(line);
-        }
-        System.out.println("**********");
-        reader.close();}
-    catch (FileNotFoundException e) {
-       System.out.println("error Reading File");
-        e.printStackTrace();
-     }
-          
-       
-
-///ADDDING And Removing A task
- System.out.println("Enter a Task (add task;to add a task)(remove task//To reove it)(quit to exit )");
-        String taskinp = inp.nextLine();
-        while(!(taskinp.equalsIgnoreCase("quit"))){
-    
-        String[] split = taskinp.split(" ");
-
-
-        if(split[0].equalsIgnoreCase("add")){
-           
-         for(int i=1;i<split.length;i++){
-                
-           text = text+split[i]+" ";
-            }
-            array.add(text);
-            text="";
-        
-        }
-        if(split[0].equalsIgnoreCase("remove")){
-       for(int i=1;i<split.length;i++){
-                
-        text = text+split[i]+" ";
-            }
-            array.remove(text);
-            text="";
-
-        }
-        System.out.println("****TASK ****");
-          for(String tasks:array){
+            fMain.add(line);
             
-            System.out.println(tasks);
         }
-        System.out.println("**********");
-        taskinp = inp.nextLine();
-    
+        readfile.close();
+        System.out.println("*********************");}
+
+
+
+    static String addtask(String[] parts){//ADDING TASK 
+        String text="";
+                for(int i=1;i<parts.length;i++){
+                    text = text+parts[i]+" ";  
+                }
+                return text;
     }
 
-    System.out.println();
-    System.out.println();
-    System.out.println();
-  
-    try {
-      
-        FileWriter writer = new FileWriter(todolist);
-        for(int l =0 ; l<array.size();l++){
-            writer.write(array.get(l)+"\n");
-            System.out.println(array.get(l));
+    static void displaytasks(ArrayList <String> dMain){
+           System.out.println("******TASKS************");
+                for(int k=0;k<dMain.size();k++){
+                    System.out.println(dMain.get(k));
+                }
+         System.out.println("*********************");
+        
+    }
+
+    static String removetask(String[] parts){
+        String text="";
+                for(int i=1;i<parts.length;i++){
+                    text = text+parts[i]+" ";  
+                }
+                return text;
+
+    }
+    static void WriteToFile(File file,ArrayList <String> wMain) throws IOException{
+                 FileWriter writer =new FileWriter(file);
+        for(String tasks:wMain){
+           
+            writer.write(tasks+"\n");
         }
         writer.close();
-         System.out.println("Tasks saved to todolist.txt successfully!");
-    } catch (IOException e) {
-        e.printStackTrace();
+        System.out.println(file+" has been Written");
     }
+
+
+    public static void main(String[] args) throws IOException {
+        ArrayList <String> Main = new ArrayList<>();
+        File file= new File("Taskmanagment.txt");
+      loadile(Main,file);
+      System.out.println("Enter a task");
+      Scanner sc = new Scanner(System.in);
+      String userinp =sc.nextLine();
+        while (!(userinp.equalsIgnoreCase("quit"))) {
+            String[] parts = userinp.split(" ");
+        if(parts[0].equalsIgnoreCase("add")){
+            String text=addtask(parts);
+            Main.add(text);
+            text="";
+            System.out.println("here");
+            displaytasks(Main);
+            userinp =sc.nextLine();
+        }
+
+         if(parts[0].equalsIgnoreCase("remove")){
+            String text=removetask(parts);
+            Main.remove(text);
+            text="";
+            displaytasks(Main);
+            userinp =sc.nextLine();
+        }
+            
+        }
+        WriteToFile(file, Main);
+       
       
     }
 }
