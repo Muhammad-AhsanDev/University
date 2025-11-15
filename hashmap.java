@@ -21,7 +21,7 @@ public class hashmap{
        System.out.println(map.keySet());
        System.out.println(map.values());
        System.out.println(map.entrySet());
-       WhatWHATAHWTAHAWTHAHAWTHAWTs
+     
        
     }
 
