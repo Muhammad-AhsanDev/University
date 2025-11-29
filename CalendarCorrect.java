@@ -9,7 +9,7 @@ public class CalendarCorrect {
         System.out.println("MON TUE WED THU FRI SAT SUN");
 
         int year = 2025;
-        int month = 11;
+        int month = 10;
 
         LocalDate first = LocalDate.of(year, month, 1);
         DayOfWeek firstDay = first.getDayOfWeek();
