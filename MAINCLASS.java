@@ -97,10 +97,10 @@ public class MAINCLASS {
             String key = s.getField(index);
             int amount = s.getAmount();
 
-            if(sumMap.containsKey(key)) {
-                sumMap.put(key, sumMap.get(key) + amount);
+            if(sumMap.containsKey(key)) {//Key== Feild data(Product etc)
+                sumMap.put(key, sumMap.get(key) + amount);//Returns the value of that key and together they get stored in the same key 
             } else {
-                sumMap.put(key, amount);
+                sumMap.put(key, amount);//For any new key that is not listed yet
             }
         }
 
