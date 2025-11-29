@@ -22,7 +22,7 @@ public class Main {
 
         File folder = new File(folderPath);
 
-        if (!folder.exists() || !folder.isDirectory()) {
+        if (!folder.exists() || !folder.isDirectory()) {//Checks,Whether,is//a//folder,or,not
             System.out.println("Invalid folder path!");
             return;
         }
