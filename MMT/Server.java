@@ -10,6 +10,7 @@ class Serverclass{
 
     Serverclass(ServerSocket serverSocket) throws IOException{
         this.serverSocket=serverSocket;
+        System.out.println("SERVER STARTED WAITING FOR CLIENT .........");
     }
     public void Severstart() throws IOException{
         while (!(serverSocket.isClosed())) {
