@@ -49,11 +49,13 @@ public class MAINCLASS {
     // ------------------ LOAD FILE ---------------------
     public static void loadFile() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("Sales.txt"));
-            String line;
-            br.readLine(); // skip header
+            File file= new File("Sales.txt");
+            Scanner sc = new Scanner(file);
+            String line=sc.nextLine();
+          
 
-            while((line = br.readLine()) != null) {
+            while(sc.hasNextLine()) {
+                line=sc.nextLine();
                 if(line.trim().isEmpty()) continue;
 
                 String[] fields = line.split("\t+");
@@ -68,7 +70,7 @@ public class MAINCLASS {
 
                 sales.add(new SaleData(date, region, repId, product, qty, price));
             }
-            br.close();
+            sc.close();
         }
         catch(Exception e) {
             System.out.println("Error reading file: " + e.getMessage());
