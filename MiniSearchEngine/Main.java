@@ -28,7 +28,13 @@ public class Main {
         }
 
         File[] files = folder.listFiles((dir, name) -> name.endsWith(".txt"));
-
+        /*
+    new FilenameFilter() {
+    public boolean accept(File dir, String name) {  here dir accepts the folder path:::::and name gets the file name
+        return name.endsWith(".txt");
+    }
+}
+     */
         if (files == null || files.length == 0) {
             System.out.println("No .txt files found!");
             return;
@@ -49,7 +55,7 @@ public class Main {
             String line;
             int lineNumber = 1;
 
-            boolean foundAnything = false;
+            boolean foundAnything = false;//For printing file name for the searching one 
 
             while ((line = br.readLine()) != null) {
 

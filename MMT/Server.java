@@ -12,7 +12,7 @@ class Serverclass{
         this.serverSocket=serverSocket;
         System.out.println("SERVER STARTED WAITING FOR CLIENT .........");
     }
-    public void Severstart() throws IOException{
+    public void Severstart() throws IOException{//This is the method cakked for starting to recice clients
         while (!(serverSocket.isClosed())) {
             clientSocket=serverSocket.accept(); 
             System.out.println("A NEW CLIENT CONNECTED");         

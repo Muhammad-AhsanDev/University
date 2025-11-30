@@ -52,13 +52,13 @@ class Client {
         }
     }
     public void Listenformsg(){
-        new Thread(new Runnable(){
+        new Thread(new Runnable(){//anonymus class
                @Override
             public void run(){
                 String msgforgroupchat;
                 while (socket.isConnected()) {
                     try{
-                    msgforgroupchat=in.readLine();
+                    msgforgroupchat=in.readLine();//reads from client handlers broadcast method
                     System.out.println(msgforgroupchat);
                     }
                   catch(IOException e){
